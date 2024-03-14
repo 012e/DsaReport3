@@ -1,0 +1,73 @@
+\documentclass{report}
+
+\usepackage[margin=0.7in]{geometry}
+\usepackage[parfill]{parskip}
+
+% hỗ trợ tiếng việt 
+\usepackage[vietnamese]{babel}
+\usepackage{fontspec}
+
+\usepackage{
+    % nammoadidaphat
+    amsmath,
+    % tạo các liên kết
+    hyperref,
+    % vẽ đồ thị
+    pgfplots,
+    % hỗ trợ hiển thị code
+    minted,
+    tikz
+}
+
+\hypersetup{
+    colorlinks,
+    unicode=true,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+% k nho cai nay lam gi nua
+\pgfplotsset{scaled y ticks=false}
+
+% theme cho code
+\usemintedstyle{vs}
+
+\newcommand{\CacThanhVienTrongNhom}{
+	\begin{minipage}{0.3\textwidth}
+		\begin{flushleft} 
+            \large\emph{Các sinh viên thực hiện}\\
+                Phạm Nhật Huy\\
+                Lê Nguyễn Gia Huy\\
+                Vũ Quốc Huy\\
+                Lê Bùi Quốc Huy\\
+                Lê Văn Huy\\
+                Văng Thanh Huy\\
+                Phạm Gia Huy\\
+                Trương Đức Huy\\
+		\end{flushleft}
+	\end{minipage}~
+	\begin{minipage}{0.3\textwidth}
+		\begin{flushright} 
+            \large\emph{MSSV} \\
+                23520643\\
+                23520613\\
+                23520657\\
+                23520610\\
+                23520616\\
+                23520652\\
+                23520642\\
+                23520651\\
+		\end{flushright}
+    \end{minipage}
+}
+
+\newcommand{\TenBai}{Báo cáo số 2\\Các thuật toán sắp xếp}
+\newcommand{\TenNhom}{Nhóm 8}
+\newcommand{\NguoiHuongDan}{Tên Ông Thầy Đẹp trai}
+
+\newcommand{\InputOutputTable}[2]{
+
+}
+

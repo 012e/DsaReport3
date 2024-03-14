@@ -1,0 +1,131 @@
+\chapter{Câu 1: Các bài tập cơ bản}
+
+\section{Câu 1.1: Các thuật toán sort cơ bản}
+
+\subsection{Thuật toán Selection Sort}
+\subsubsection{Ý tưởng}
+\subsubsection{Cài đặt}
+\begin{minted}[]{c++}
+void selectionSort(vector<int>& v) {
+    for (int i = 0; i < v.size(); i++) {
+        swap(v[i], *min_element(v.begin()+i, v.end()));
+    }
+}
+\end{minted}
+\subsubsection{Demo}
+
+\subsection{Thuật toán Insertion Sort}
+\subsubsection{Ý tưởng}
+\subsubsection{Cài đặt}
+\begin{minted}[]{c++}
+void insertionSort(vector<int>& v) {
+    for (int i = 1; i < v.size(); i++) {
+        int j = i;
+        while (j > 0 && v[j] < v[j-1]) {
+            swap(v[j], v[j-1]);
+            j--;
+        }
+    }
+}
+\end{minted}
+\subsubsection{Demo}
+
+\subsection{Thuật toán Bubble Sort}
+\subsubsection{Ý tưởng}
+\subsubsection{Cài đặt}
+\begin{minted}[]{c++}
+void bubbleSort(vector<int>& v) {
+    for (int i = 0; i < v.size(); i++) {
+        for (int j = 0; j < v.size() - 1; j++) {
+            if (v[i] < v[j]) swap(v[i], v[j]);
+        }
+    }
+}
+\end{minted}
+\subsubsection{Demo}
+
+\subsection{Thuật toán Interchange Sort}
+\subsubsection{Ý tưởng}
+\subsubsection{Cài đặt}
+\begin{minted}[]{c++}
+void interchangeSort(vector<int>& v) {
+    for (int i = 0; i < v.size() - 1; i++) {
+        for (int j = i + 1; j < v.size(); j++) {
+            if (v[i] > v[j])
+                swap(v[i], v[j]);
+        }
+    }
+}
+\end{minted}
+\subsubsection{Demo}
+
+
+\section{Câu 1.2: Benchmark các thuật toán sort}
+
+Với các mảng gồm các phần tử được tạo ngẫu nghiên (bằng \mintinline{c++}{srand(seed); rand()}),
+ta sẽ đo thời gian chạy của các thuật toán sort cơ bản: Selection Sort, Insertion Sort, Bubble Sort, Interchange Sort.
+Lấy thời gian trung bình của 5 lần chạy tương ứng với các kích thước mảng, ta có đồ thị sau:
+
+\begin{tikzpicture}
+\begin{axis}[
+    title={Thời gian chạy theo số lượng phần tử},
+    xlabel={Thời gian chạy [ms]},
+    ylabel={Số lượng phần tử},
+    xmin=0,
+    ymin=0, ymax=10000,
+    % xtick={0,20,40,60,80,100},
+    ytick={100,500,1000,5000,10000},
+    legend pos=outer north east,
+    xmajorgrids=true,
+    grid style=dashed,
+]
+
+% interchange sort
+\addplot[color=blue]
+coordinates {
+    (0.10,100)
+    (2.40,500)
+    (9.65,1000)
+    (252.82,5000)
+    (1011.08,10000)
+};
+
+%  insertion sort
+\addplot[color=red]
+coordinates {
+    (0.02,100)
+    (0.64,500)
+    (2.45,1000)
+    (57.41,5000)
+    (238.95,10000)
+};
+
+% Bubble sort
+\addplot[color=green]
+coordinates {
+    (0.17,100)
+    (4.36,500)
+    (16.69,1000)
+    (408.78,5000)
+    (1654.72,10000)
+};
+
+% selection sort
+\addplot[color=black]
+coordinates {
+    (0.14,100)
+    (3.22,500)
+    (13.22,1000)
+    (340.66,5000)
+    (1319.14,10000)
+};
+
+\legend{
+    Interchange Sort,
+    Insertion Sort,
+    Bubble Sort,
+    Selection Sort,
+}
+    
+\end{axis}
+\end{tikzpicture}
